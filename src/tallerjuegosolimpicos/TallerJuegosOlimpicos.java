@@ -15,6 +15,7 @@ public class TallerJuegosOlimpicos {
         jjoo.ingresaDelegacion();
         jjoo.buscarDeporte();
         jjoo.cambiarMedallas();
+        jjoo.masMedallas();
         
     }
     

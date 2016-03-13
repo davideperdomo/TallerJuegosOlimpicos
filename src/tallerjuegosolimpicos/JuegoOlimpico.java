@@ -1,17 +1,9 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package tallerjuegosolimpicos;
 
 import java.util.ArrayList;
 import java.util.Scanner;
 
-/**
- *
- * @author David
- */
+
 public class JuegoOlimpico {
     
     Scanner lectura = new Scanner (System.in);
@@ -28,8 +20,7 @@ public class JuegoOlimpico {
             
             for(int j  =0;j< ng; j++ ){
                 System.out.println("Numero integrantes grupo "+ (j+1) + " : (max 10)");
-                int ni = lectura.nextInt();
-                
+                int ni = lectura.nextInt();                
                 
                 ArrayList<Integrantes> integrante = new ArrayList<Integrantes>();
                 
@@ -37,18 +28,15 @@ public class JuegoOlimpico {
                     System.out.println("Nombre integrante "+ (i+1) + " : ");
                     String nom = lectura.next();
                     System.out.println("Apellido integrante "+ (i+1) + " : ");
-                    String ape = lectura.next ();                    
+                    String ape = lectura.next ();                   
                     
-                    Integrantes Auxi = new Integrantes(nom,ape);
-                    
+                    Integrantes Auxi = new Integrantes(nom,ape);                    
                     integrante.add(Auxi);
                 }
                 
                 System.out.println("Deporte grupo "+ (j+1) + " : ");
-                String dep = lectura.next();
-                
+                String dep = lectura.next();                
                 Grupo Auxg = new Grupo(dep,integrante);
-                
                 grupos.add(Auxg);
                 
             }
@@ -56,8 +44,7 @@ public class JuegoOlimpico {
             System.out.println("Pais delegacion "+ (k+1) + " : ");
             String pais = lectura.next();
             
-            int[] Medalla = new int[3];
-            
+            int[] Medalla = new int[3];          
             
                 System.out.println("Ingresa el numero de medallas de oro "+ (k+1) + " : ");
                 Medalla[0]= lectura.nextInt();
@@ -84,18 +71,11 @@ public class JuegoOlimpico {
                 else{
                     System.out.println("El pais: "+ Deg.get(i).getPais() + "tiene grupo de" + deping);
                 }
-            }
-        
+            }        
         }
     }
     
-    public void cambiarMedallas(){
-        //HashMap <String, Delegacion> buscaPais = new HashMap<String, Delegacion>();
-        //for(int ii=0; ii<buscaPais.size();ii++){
-        //    String paisobt = buscaPais.get(ii).getPais();
-          //  buscaPais.put(paisobt, buscaPais.get(ii));
-        //}
-        
+    public void cambiarMedallas(){        
         System.out.println("Pais a cambiar medallas: ");
         String pais = lectura.next();
         
@@ -107,10 +87,24 @@ public class JuegoOlimpico {
                 Deg.get(i).cambiarMedalla(Deg.get(i).getMedalla());
             }
         }
-        //System.out.println("medallas: "+buscaPais.get(id));
-        //Delegacion xd = buscaPais.get(id);
-        
-        //xd.cambiarMedalla(xd.getMedalla());
+    }
+    
+    public void masMedallas(){
+        int x=0;
+        Delegacion degmasMed = new Delegacion();
+        for(int i=0; i<Deg.size(); i++){
+               if((Deg.get(i).sumaMedallas() < Deg.get(i+1).sumaMedallas()) && (Deg.get(i+1).sumaMedallas() > x)){
+                x= Deg.get(i+i).sumaMedallas();
+                degmasMed = Deg.get(i+1);
+            }
+            else{
+                if(Deg.get(i).sumaMedallas()>x){
+                    x= Deg.get(i).sumaMedallas();
+                    degmasMed = Deg.get(i);
+                }
+            }            
+        }
+        System.out.println("Ganador" + degmasMed.getPais());
     }
     
 }
