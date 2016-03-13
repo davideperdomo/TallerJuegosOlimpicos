@@ -6,7 +6,6 @@
 package tallerjuegosolimpicos;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.Scanner;
 
 /**
@@ -16,13 +15,10 @@ import java.util.Scanner;
 public class JuegoOlimpico {
     
     Scanner lectura = new Scanner (System.in);
-           
+    ArrayList <Delegacion> Deg = new ArrayList<Delegacion>();       
     public void ingresaDelegacion (){
         System.out.println("Numero de delegaciones (max. 10): ");
-        int nd = lectura.nextInt();
-        
-       
-        ArrayList <Delegacion> Deg = new ArrayList<Delegacion>();
+        int nd = lectura.nextInt();                      
         
         for(int k=0; k< nd ; k++){
             System.out.println("Grupos delegacion "+ (k+1) + " (max 5): ");
@@ -76,18 +72,45 @@ public class JuegoOlimpico {
         }
     }
     
+    public void buscarDeporte(){
+        System.out.println("Deporte a buscar: ");
+        String deping = lectura.next();
+        
+          for(int i=0; i < Deg.size(); i++){
+                for(int j=0; j < Deg.get(i).getGrupos().size();j++){
+                    if(deping != Deg.get(i).getGrupos().get(j).getDeporte()){
+                    System.out.println("No encontrado");
+                }
+                else{
+                    System.out.println("El pais: "+ Deg.get(i).getPais() + "tiene grupo de" + deping);
+                }
+            }
+        
+        }
+    }
     
     public void cambiarMedallas(){
-        HashMap <String, Delegacion> buscaPais = new HashMap<>();
-        for(int ii=0; ii<buscaPais.size();ii++){
-            String paisobt = buscaPais.get(ii).getPais();
-            buscaPais.put(paisobt, buscaPais.get(ii));
-        }
-        System.out.println("Pais a cambiar medallas: ");
-        String id = lectura.next();
-        Delegacion xd = buscaPais.get(id);
+        //HashMap <String, Delegacion> buscaPais = new HashMap<String, Delegacion>();
+        //for(int ii=0; ii<buscaPais.size();ii++){
+        //    String paisobt = buscaPais.get(ii).getPais();
+          //  buscaPais.put(paisobt, buscaPais.get(ii));
+        //}
         
-        xd.cambiarMedalla(xd.getMedalla());
+        System.out.println("Pais a cambiar medallas: ");
+        String pais = lectura.next();
+        
+        for(int i=0; i < Deg.size(); i++){
+            if(pais != Deg.get(i).getPais()){
+                System.out.println("No encontrado");
+            }
+            else{
+                Deg.get(i).cambiarMedalla(Deg.get(i).getMedalla());
+            }
+        }
+        //System.out.println("medallas: "+buscaPais.get(id));
+        //Delegacion xd = buscaPais.get(id);
+        
+        //xd.cambiarMedalla(xd.getMedalla());
     }
     
 }
