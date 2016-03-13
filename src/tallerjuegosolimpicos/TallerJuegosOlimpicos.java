@@ -9,7 +9,6 @@ public class Tallerjuegosolimpicos {
         int opcion;
         boolean op=true;
         JuegoOlimpico jjoo = new JuegoOlimpico();
-        opcion = lectura.nextInt();
         System.out.println("Que desea hacer? ");
         System.out.println("1. Crear delegacion nueva.");
         System.out.println("2. Buscar y mostrar grupos por deporte.");
@@ -17,6 +16,7 @@ public class Tallerjuegosolimpicos {
         System.out.println("4. mostrar la delegacion con mas medallas.");
         System.out.println("5. Salir.");
         while (op=true){
+        opcion = lectura.nextInt();
         switch (opcion){
             case 1:
                 jjoo.ingresaDelegacion();
