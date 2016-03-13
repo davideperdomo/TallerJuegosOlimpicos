@@ -13,7 +13,9 @@ public class TallerJuegosOlimpicos {
         JuegoOlimpico jjoo = new JuegoOlimpico();
         
         jjoo.ingresaDelegacion();
+        jjoo.buscarDeporte();
         jjoo.cambiarMedallas();
+        
     }
     
 }
